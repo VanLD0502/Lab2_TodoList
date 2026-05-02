@@ -1,5 +1,12 @@
 # Master To Do - Todo List Application
 
+## Thông tin sinh viên
+- **Họ và tên**: Nguyễn Hữu Tường Vân
+- **MSSV**: 24120489
+- **Trường**: Đại học Khoa học Tự nhiên, TP.HCM
+- **Khoa**: Công nghệ Thông tin
+- **Môn học**: Tư Duy Tính Toán
+
 Ứng dụng quản lý công việc (Todo List) được xây dựng với **React** (frontend) và **FastAPI** (backend), tích hợp **Firebase Authentication** và **Firestore Database**.
 
 ## 🏗️ Cấu trúc dự án
