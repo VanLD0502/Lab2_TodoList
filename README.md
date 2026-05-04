@@ -96,6 +96,9 @@ python -m venv venv
 # Activate (Windows)
 venv\Scripts\activate
 
+# Activate (Linux/macOS)
+source venv/bin/activate
+
 # Cài đặt dependencies
 pip install -r ../requirements.txt
 
@@ -142,11 +145,10 @@ Frontend sẽ chạy tại: `http://localhost:5173`
 - ✅ Tìm kiếm và lọc tasks
 - ✅ Hiển thị thống kê (completed / in progress)
 - ✅ Phân trang
-- ✅ Giao diện minimalist, responsive
 
 ## 🎥 Video Demo
 
-[Link video demo](YOUR_VIDEO_LINK_HERE)
+[Link video demo](https://drive.google.com/file/d/1CFm6v6Ug7qXkAuF_1GHx-hAmsJcenZj1/view?usp=drive_link)
 
 ## 📦 Tech Stack
 
