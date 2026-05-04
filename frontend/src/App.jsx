@@ -10,7 +10,7 @@ import { auth } from "./services/firebase";
 import api from "./services/api";
 
 import LoginPage from "./components/LoginPage";
-import RegisterPage from "./components/RegisterPage";
+
 import Dashboard from "./components/Dashboard";
 import ProfilePage from "./components/ProfilePage";
 import { Loader2 } from "lucide-react";
@@ -71,10 +71,7 @@ function App() {
           path="/login" 
           element={!user ? <LoginPage /> : <Navigate to="/" replace />} 
         />
-        <Route 
-          path="/register" 
-          element={!user ? <RegisterPage /> : <Navigate to="/" replace />} 
-        />
+
         <Route 
           path="/profile" 
           element={user ? <ProfilePage user={user} onLogout={handleLogout} /> : <Navigate to="/login" replace />} 

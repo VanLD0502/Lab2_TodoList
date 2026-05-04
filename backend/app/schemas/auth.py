@@ -4,10 +4,7 @@ from typing import Optional, List
 class LoginRequest(BaseModel):
     token: str
 
-class RegisterRequest(BaseModel):
-    email: str
-    password: str
-    display_name: Optional[str] = None
+
 
 class UpdateProfileRequest(BaseModel):
     display_name: Optional[str] = None

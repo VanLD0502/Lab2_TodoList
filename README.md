@@ -42,6 +42,17 @@ Lab2/
 4. Tạo **Firestore Database** (Start in test mode)
 5. Vào **Project Settings** → **General** → **Your apps** → Thêm **Web app** → Copy config
 6. Vào **Project Settings** → **Service Accounts** → **Generate New Private Key** → Tải JSON
+7. **Cấu hình Google Auth**: Để Google Login hoạt động ở local và production, bạn cần cấu hình OAuth 2.0 Client trong [Google Cloud Console](https://console.cloud.google.com/).
+
+![Google Auth Setup](./docs/images/google_auth_setup.png)
+
+**Giải thích các thông số:**
+*   **Authorized JavaScript origins**: Các domain được phép gửi yêu cầu đăng nhập.
+    *   `http://localhost:5173`: Cho phép chạy ứng dụng ở máy local (Vite).
+    *   `https://<your-project-id>.firebaseapp.com`: Domain mặc định của Firebase khi deploy.
+*   **Authorized redirect URIs**: Nơi Google gửi kết quả xác thực về.
+    *   `https://<your-project-id>.firebaseapp.com/__/auth/handler`: Đây là endpoint của Firebase Auth giúp xử lý đăng nhập popup/redirect. Bạn bắt buộc phải thêm dòng này để Google Auth hoạt động với Firebase.
+
 
 ### 2. Cấu hình Frontend
 
@@ -105,7 +116,7 @@ npm install
 npm run dev
 ```
 
-Frontend sẽ chạy tại: `http://localhost:5174`
+Frontend sẽ chạy tại: `http://localhost:5173`
 
 ## 🔗 API Endpoints
 
@@ -114,7 +125,6 @@ Frontend sẽ chạy tại: `http://localhost:5174`
 | `GET` | `/` | API info |
 | `GET` | `/health` | Health check |
 | `POST` | `/auth/login` | Verify Firebase token |
-| `POST` | `/auth/register`| Đăng ký bằng Email/Password |
 | `GET` | `/auth/me` | Lấy thông tin user hiện tại |
 | `PUT` | `/auth/profile`| Cập nhật hồ sơ (tên, avatar) |
 | `POST` | `/auth/set-password` | Đổi hoặc tạo mật khẩu mới |
@@ -125,7 +135,8 @@ Frontend sẽ chạy tại: `http://localhost:5174`
 
 ## ✨ Tính năng
 
-- ✅ Đăng nhập / Đăng ký bằng Firebase (Email/Password + Google)
+- ✅ Đăng nhập bằng Firebase (Google Login + Email/Password cho tài khoản đã có)
+- ✅ Tự động đăng ký khi đăng nhập Google lần đầu
 - ✅ Thêm, sửa, xóa task
 - ✅ Đánh dấu completed / uncompleted
 - ✅ Tìm kiếm và lọc tasks

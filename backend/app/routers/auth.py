@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Header, Depends
 from firebase_admin import auth as firebase_auth
 from app.schemas.auth import (
-    LoginRequest, RegisterRequest, UpdateProfileRequest,
+    LoginRequest, UpdateProfileRequest,
     SetPasswordRequest, UserResponse, UserDetailResponse
 )
 
@@ -34,25 +34,7 @@ async def login(request: LoginRequest):
     except Exception as e:
         print(f"DEBUG AUTH ERROR: {str(e)}")
         raise HTTPException(status_code=401, detail=f"Invalid token: {str(e)}")
-@router.post("/register", response_model=UserResponse)
-async def register(request: RegisterRequest):
-    """Register a new user with email and password."""
-    try:
-        user_record = firebase_auth.create_user(
-            email=request.email,
-            password=request.password,
-            display_name=request.display_name
-        )
-        return {
-            "uid": user_record.uid,
-            "email": user_record.email,
-            "name": user_record.display_name or "",
-            "picture": ""
-        }
-    except firebase_auth.EmailAlreadyExistsError:
-        raise HTTPException(status_code=400, detail="Email này đã được đăng ký.")
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+
 
 
 @router.get("/me", response_model=UserDetailResponse)

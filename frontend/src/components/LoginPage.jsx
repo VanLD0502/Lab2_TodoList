@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { loginWithEmail, loginWithGoogle } from "../services/firebase";
 import { 
   Mail, 
@@ -130,12 +130,7 @@ const LoginPage = () => {
           Google Account
         </button>
 
-        <p className="text-center mt-8 text-sm font-medium text-outline">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-primary font-bold hover:underline">
-            Create one for free
-          </Link>
-        </p>
+
       </div>
     </div>
   );
